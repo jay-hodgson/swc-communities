@@ -1,3 +1,22 @@
+Prototype for SWC-communities portal work.
+
+Frameworks/libraries being used:
+- [React](https://reactjs.org/)
+- [Flow](https://flow.org/en/)
+- [Webpack](https://webpack.js.org/)
+- [Babel](https://babeljs.io/)
+
+Considering [Redux](https://redux.js.org/) to contain the state in order to move business logic and state transitions out of most components and help support testing.
+
+Near term:
+Testing, CI, integration with Synapse.org.
+
+Future tasks:
+React Native for mobile.
+SEO (so that the new SPA sites can be found).
+
+----
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
