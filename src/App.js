@@ -1,48 +1,57 @@
 // @flow
 import React, { Component } from 'react';
-import { Grid, Navbar, Jumbotron, Button } from 'react-bootstrap';
+import { Grid, Navbar, Jumbotron } from 'react-bootstrap';
 import * as WebConstants from './WebConstants.js';
+import UserListComponent from './UserListComponent.js';
 import logo from './logo.svg';
 import './App.css';
 
-type Props = {};
-type State = {};
-
-const UserListComponent = props => {
-  const userBadges = renderUserBadges(props.children);
-
-  return (
-    <section>
-      <div><h1>Users</h1></div>
-      <div>
-        { userBadges }
-      </div>
-    </section>
-  );
+type AppProps = {};
+type AppState = { 
+  usergroupheaders: array,
+  error: string
 };
 
 
-const renderUserBadges = children => (
-  children.map(usergroupheader => this.renderUserGroupHeader(usergroupheader))
-);
+class App extends Component<AppProps, AppState> {
+  constructor(props) {
+    super(props);
+    this.state = {usergroupheaders: null, error: ""};
+  }
 
-const renderUserGroupHeader = usergroupheader => (
-  <div>
-    <a href={WebConstants.SYNAPSE_ORG}{WebConstants.PROFILE_PAGE}{usergroupheader.ownerId}>
-      {usergroupheader.firstName} {" "} {usergroupheader.lastName} {" ("} {usergroupheader.userName} {")"}
-    </a>
-  </div>
-);
+  componentDidMount() {
+    fetch(WebConstants.REPO_ENDPOINT + "userGroupHeaders?prefix=jay&limit=30&offset=0&typeFilter=USERS_ONLY")
+      .then((response) => response.json())
+      .then((responseJson) => { 
+        this.setState({ usergroupheaders: responseJson.children })})
+      .catch(error => {
+        // On error, update state to capture the error for display
+        this.setState({ error })
+      });
+  }
 
-class App extends Component<Props, State> {
   render() {
+    const { error, usergroupheaders } = this.state
+
+    let content
+    if (error) {
+      // an error occurred fetching
+      content = <p className="error">{error.message}</p>
+    } else if (usergroupheaders) {
+      // data is loaded, so display list
+      content = <UserListComponent usergroupheaders={usergroupheaders} />
+    } else {
+      // no error and no users, still loading
+      content = <p className="loading">Loading...</p>
+    }
+
     return (
       <div>
         <Navbar inverse fixedTop>
           <Grid>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="//www.synapse.org" target="_blank">What is Synapse?</a>
+                <a href={WebConstants.SYNAPSE_ORG} target="_blank">What is Synapse?</a>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
@@ -51,18 +60,14 @@ class App extends Component<Props, State> {
         <Jumbotron>
           <Grid>
             <h1>Prototype Community Portal <img src={logo} className="App-logo" alt="logo" /></h1>
-            userGroupHeaders?prefix=jay&limit=30&offset=0&typeFilter=USERS_ONLY
-            <p>
-              <Button
-                bsStyle="success"
-                bsSize="large"
-                href="http://react-bootstrap.github.io/components.html"
-                target="_blank">
-                View React Bootstrap Docs
-              </Button>
-            </p>
           </Grid>
         </Jumbotron>
+        <Grid>
+          <h4>Users</h4>
+          <div>
+            {content}
+          </div>
+        </Grid>
       </div>
     );
   }
