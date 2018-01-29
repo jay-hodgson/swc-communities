@@ -1,9 +1,7 @@
 // @flow
 import React, { Component } from 'react';
-import { Grid, Navbar, Jumbotron } from 'react-bootstrap';
 import * as WebConstants from './WebConstants.js';
 import UserListComponent from './UserListComponent.js';
-import logo from './logo.svg';
 import './App.css';
 
 type AppProps = {};
@@ -47,27 +45,11 @@ class App extends Component<AppProps, AppState> {
 
     return (
       <div>
-        <Navbar inverse fixedTop>
-          <Grid>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <a href={WebConstants.SYNAPSE_ORG} target="_blank">What is Synapse?</a>
-              </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
-          </Grid>
-        </Navbar>
-        <Jumbotron>
-          <Grid>
-            <h1>Prototype Community Portal <img src={logo} className="App-logo" alt="logo" /></h1>
-          </Grid>
-        </Jumbotron>
-        <Grid>
-          <h4>Users</h4>
-          <div>
-            {content}
-          </div>
-        </Grid>
+        <a href={WebConstants.SYNAPSE_ORG} target="_blank">What is Synapse?</a>
+        <h4>Users</h4>
+        <div>
+          {content}
+        </div>
       </div>
     );
   }
