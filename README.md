@@ -1,16 +1,9 @@
 # react-synapse-components
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+## Synapse React components library
 
-Describe react-synapse-components here.
+Run 'npm run build' to build.
+/umd/react-synapse-components.min.js contain exported react components.
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
-
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
-
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+Main entry point is /src/index.js
+This file contains the re-exported modules (using export extensions) making them available via Universal Module Definitions (UMDs)

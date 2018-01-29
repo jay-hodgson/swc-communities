@@ -1,7 +1,7 @@
 {
   "name": "react-synapse-components",
   "version": "1.0.0",
-  "description": "react-synapse-components React component",
+  "description": "react-synapse-components Synapse React components",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
