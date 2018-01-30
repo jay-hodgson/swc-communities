@@ -1,0 +1,48 @@
+{
+  "name": "synapse-react-components",
+  "version": "0.0.1",
+  "description": "Synapse React-based view components",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SageBionetworks/synapse-react-components.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SageBionetworks/synapse-react-components/issues"
+  },
+  "homepage": "https://github.com/SageBionetworks/synapse-react-components",
+  "scripts": {
+    "postinstall": "builder run npm:postinstall",
+    "preversion": "builder run npm:preversion",
+    "version": "builder run npm:version",
+    "postversion": "builder run npm:postversion",
+    "postpublish": "builder run npm:postpublish",
+    "test": "builder run npm:test"
+  },
+  "dependencies": {
+    "builder": "^3.2.3",
+    "builder-react-component": "^0.4.4"
+  },
+  "devDependencies": {
+    "enzyme": "^2.9.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-addons-test-utils": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1"
+  },
+  "publishr": {
+    "dependencies": [
+      "^builder"
+    ],
+    "files": {
+      ".npmignore": ".npmignore.publishr"
+    },
+    "scripts": {
+      "postinstall": ""
+    }
+  }
+}

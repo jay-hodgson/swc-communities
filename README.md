@@ -1,9 +1,10 @@
-# react-synapse-components
+# Synapse React components library
 
-## Synapse React components library
+## How to build
+1. Install [builder][https://github.com/FormidableLabs/builder#usage]
+2. Run `builder run build`
+New artifacts can be found in `/dist`
 
-Run 'npm run build' to build.
-/umd/react-synapse-components.min.js contain exported react components.
+(based on [builder-react-component][https://github.com/FormidableLabs/builder-react-component])
 
-Main entry point is /src/index.js
-This file contains the re-exported modules (using export extensions) making them available via Universal Module Definitions (UMDs)
+All components are written as ES6 classes.  `src/index.js` contains exported component list.
