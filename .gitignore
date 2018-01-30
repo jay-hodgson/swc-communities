@@ -2,12 +2,14 @@
 
 # dependencies
 /node_modules
+/UserListComponent/node_modules
 
 # testing
 /coverage
 
 # production
 /build
+/UserListComponent/build
 
 # misc
 .DS_Store

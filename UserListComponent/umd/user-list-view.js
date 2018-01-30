@@ -1,5 +1,5 @@
 /*!
- * react-synapse-components v1.0.0
+ * user-list-view v1.0.0
  * MIT Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -8,9 +8,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["SynapseReactComponents"] = factory();
+		exports["UserListComponent"] = factory();
 	else
-		root["SynapseReactComponents"] = factory();
+		root["UserListComponent"] = factory();
 })(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -124,20 +124,6 @@ module.exports = emptyFunction;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-if (false) {
-  module.exports = require('./cjs/react.production.min.js');
-} else {
-  module.exports = __webpack_require__(9);
-}
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -193,7 +179,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -259,6 +245,20 @@ if (true) {
 }
 
 module.exports = warning;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (false) {
+  module.exports = require('./cjs/react.production.min.js');
+} else {
+  module.exports = __webpack_require__(9);
+}
+
 
 /***/ }),
 /* 4 */
@@ -395,8 +395,8 @@ module.exports = emptyObject;
 
 
 if (true) {
-  var invariant = __webpack_require__(2);
-  var warning = __webpack_require__(3);
+  var invariant = __webpack_require__(1);
+  var warning = __webpack_require__(2);
   var ReactPropTypesSecret = __webpack_require__(10);
   var loggedTypeFailures = {};
 }
@@ -459,18 +459,43 @@ module.exports = __webpack_require__(8);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__UserListComponent__ = __webpack_require__(25);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return __WEBPACK_IMPORTED_MODULE_2__UserListComponent__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_WebConstants_js__ = __webpack_require__(25);
 
 
+
+var UserListComponent = function UserListComponent(props) {
+  var userBadges = renderUserBadges(props.usergroupheaders);
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'section',
+    null,
+    userBadges
+  );
+};
+
+var renderUserBadges = function renderUserBadges(usergroupheaders) {
+  return usergroupheaders.map(function (usergroupheader) {
+    return renderUserGroupHeader(usergroupheader);
+  });
+};
+
+var renderUserGroupHeader = function renderUserGroupHeader(usergroupheader) {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'div',
+    { key: usergroupheader.ownerId },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'a',
+      { href: __WEBPACK_IMPORTED_MODULE_2__shared_WebConstants_js__["b" /* SYNAPSE_ORG */] + __WEBPACK_IMPORTED_MODULE_2__shared_WebConstants_js__["a" /* PROFILE_PAGE */] + usergroupheader.ownerId, target: '_blank' },
+      usergroupheader.firstName + " " + usergroupheader.lastName + " (" + usergroupheader.userName + ")"
+    )
+  );
+};
 
 // export library components
-
-
+/* harmony default export */ __webpack_exports__["default"] = (UserListComponent);
 
 /***/ }),
 /* 9 */
@@ -496,8 +521,8 @@ if (true) {
 
 var _assign = __webpack_require__(4);
 var emptyObject = __webpack_require__(5);
-var invariant = __webpack_require__(2);
-var warning = __webpack_require__(3);
+var invariant = __webpack_require__(1);
+var warning = __webpack_require__(2);
 var emptyFunction = __webpack_require__(0);
 var checkPropTypes = __webpack_require__(6);
 
@@ -1922,9 +1947,9 @@ if (true) {
   (function() {
 'use strict';
 
-var React = __webpack_require__(1);
-var invariant = __webpack_require__(2);
-var warning = __webpack_require__(3);
+var React = __webpack_require__(3);
+var invariant = __webpack_require__(1);
+var warning = __webpack_require__(2);
 var ExecutionEnvironment = __webpack_require__(13);
 var _assign = __webpack_require__(4);
 var emptyFunction = __webpack_require__(0);
@@ -17820,46 +17845,6 @@ module.exports = camelize;
 
 /***/ }),
 /* 25 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__WebConstants_js__ = __webpack_require__(26);
-
-
-
-var UserListComponent = function UserListComponent(props) {
-  var userBadges = renderUserBadges(props.usergroupheaders);
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'section',
-    null,
-    userBadges
-  );
-};
-
-var renderUserBadges = function renderUserBadges(usergroupheaders) {
-  return usergroupheaders.map(function (usergroupheader) {
-    return renderUserGroupHeader(usergroupheader);
-  });
-};
-
-var renderUserGroupHeader = function renderUserGroupHeader(usergroupheader) {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'div',
-    { key: usergroupheader.ownerId },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'a',
-      { href: __WEBPACK_IMPORTED_MODULE_1__WebConstants_js__["b" /* SYNAPSE_ORG */] + __WEBPACK_IMPORTED_MODULE_1__WebConstants_js__["a" /* PROFILE_PAGE */] + usergroupheader.ownerId, target: '_blank' },
-      usergroupheader.firstName + " " + usergroupheader.lastName + " (" + usergroupheader.userName + ")"
-    )
-  );
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (UserListComponent);
-
-/***/ }),
-/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
